@@ -13,8 +13,6 @@ npm-debug.log*
 /build
 /dist
 
-# OS files
-.DS_Store
 
 # IDE files
 .vscode/
@@ -22,3 +20,7 @@ npm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+
+# OS files
+.DS_Store
