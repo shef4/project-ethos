@@ -62,8 +62,3 @@ Desktop.ini
 .eslintcache
 .prettiercache
 jest-cache/
-
-# Package lock files (optional)
-# Uncomment if you choose not to track them
-# package-lock.json
-# yarn.lock
