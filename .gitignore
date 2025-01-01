@@ -1,5 +1,7 @@
 # Node modules
 /node_modules
+/frontend/node_modules
+/backend/node_modules
 
 # Logs
 logs
@@ -12,15 +14,56 @@ npm-debug.log*
 # Build directories
 /build
 /dist
+/frontend/build
+/frontend/dist
+/backend/build
+/backend/dist
 
+# Coverage reports
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Backup files
+*.bak
+*.tmp
+*.swp
+*.swo
+*.swn
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
 
 # IDE files
 .vscode/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.sublime-project
+*.sublime-workspace
+.atom/
+\#*\#
+*.sublime-*
 
+# Editor specific
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
 
-# OS files
-.DS_Store
+# Prettier and ESLint caches
+.eslintcache
+.prettiercache
+jest-cache/
+
+# Package lock files (optional)
+# Uncomment if you choose not to track them
+# package-lock.json
+# yarn.lock
