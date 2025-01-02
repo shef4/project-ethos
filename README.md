@@ -15,8 +15,6 @@
   - [Folder Structure](#folder-structure)
   - [Usage](#usage)
   - [Future Enhancements](#future-enhancements)
-  - [Screenshots](#screenshots)
-  - [API Documentation](#api-documentation)
   - [Contributing](#contributing)
   - [License](#license)
   - [Contact](#contact)
@@ -236,19 +234,40 @@ project-ethos/
 │   ├── .prettierrc              # Prettier configuration
 │   └── .env.example             # Example environment variables file
 ├── frontend/                    # Frontend codebase
-│   ├── public/                  # Static assets (e.g., index.html, favicon)
-│   ├── src/                     # Source files for frontend
-│   │   ├── components/          # Reusable UI components
-│   │   │   ├── common/          # Generic reusable components (buttons, inputs)
-│   │   │   ├── layout/          # Layout components (header, footer, navigation)
-│   │   │   └── pages/           # Page-specific components
-│   │   ├── hooks/               # Custom React hooks
-│   │   ├── services/            # API calls and external service integration
-│   │   ├── context/             # React Context for global state management
-│   │   ├── styles/              # Global styles (CSS or Tailwind configurations)
-│   │   ├── utils/               # Utility functions
-│   │   ├── App.jsx              # Root application component
-│   │   └── index.js             # Entry point
+│   ├── public/
+│   │   ├── index.html               # Entry point for React
+│   │   ├── favicon.ico              # App favicon
+│   │   └── assets/                  # Static assets
+│   │       ├── icons/               # Icons for the app
+│   │       ├── logos/               # App logos
+│   │       └── illustrations/       # Illustrations for empty states, onboarding, etc.
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── common/              # Generic components (buttons, inputs)
+│   │   │   │   ├── Button.jsx       # Primary, secondary, etc.
+│   │   │   │   ├── TextField.jsx    # Input fields
+│   │   │   │   ├── Dropdown.jsx     # Dropdown menus
+│   │   │   │   └── Modal.jsx        # Reusable modal component
+│   │   │   ├── layout/              # Layout components
+│   │   │   │   ├── Header.jsx       # Top navigation
+│   │   │   │   ├── Footer.jsx       # Footer section
+│   │   │   │   └── Sidebar.jsx      # Side navigation (if needed)
+│   │   │   └── pages/               # Page-specific components
+│   │   │       ├── LandingPage.jsx  # Landing page design
+│   │   │       ├── Dashboard.jsx    # Dashboard with company list
+│   │   │       ├── CompanyProfile.jsx # Company detail view
+│   │   │       ├── WriteReview.jsx  # Write review form
+│   │   │       └── Profile.jsx      # User profile/settings
+│   │   ├── hooks/                   # Custom React hooks
+│   │   ├── services/                # API integration (e.g., Axios)
+│   │   ├── context/                 # React Context for state management
+│   │   ├── styles/                  # Global styles
+│   │   │   ├── colors.css           # Color variables
+│   │   │   ├── typography.css       # Font styles (Inter, Roboto)
+│   │   │   └── components.css       # Button, input, and other component styles
+│   │   ├── utils/                   # Utility functions
+│   │   ├── App.jsx                  # Root application component
+│   │   └── index.js                 # Entry point
 │   ├── tests/                   # Unit and integration tests for frontend
 │   ├── package.json             # Frontend dependencies and scripts
 │   ├── .eslintrc.js             # Frontend ESLint configuration
@@ -282,14 +301,6 @@ Future Enhancements
 - Introduce levels, badges, and rewards to encourage user participation.
 - Localization:
 - Support multiple languages and cultural preferences to expand the platform’s reach.
-
-## Screenshots
-
-(Add screenshots here to showcase the platform’s design and functionality.)
-
-## API Documentation
-
-(Provide links or details about the API endpoints, authentication methods, and usage guidelines.)
 
 ## Contributing
 

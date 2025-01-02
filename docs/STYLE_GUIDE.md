@@ -1,4 +1,4 @@
-# Style Guide
+# Style Guide TODO
 
 Welcome to the **Project-Ethos** Style Guide! This document outlines the coding standards and best practices to maintain a consistent and readable codebase. Adhering to these guidelines ensures that our project remains maintainable and scalable as we grow.
 
