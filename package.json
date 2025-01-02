@@ -1,0 +1,29 @@
+{
+  "name": "project-ethos",
+  "version": "1.0.0",
+  "description": "![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg) ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm start --prefix frontend\" \"npm run dev --prefix backend\"",
+    "frontend": "npm start --prefix frontend",
+    "backend": "npm run dev --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shef4/project-ethos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shef4/project-ethos/issues"
+  },
+  "homepage": "https://github.com/shef4/project-ethos#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

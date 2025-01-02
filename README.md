@@ -186,7 +186,7 @@ cd project-ethos
     plugins: [],
     }
     ```
--	Add Tailwind directives to src/index.css:
+-	Add Tailwind directives to src/styles/index.css:
     ```css
     @tailwind base;
     @tailwind components;
@@ -221,19 +221,24 @@ project-ethos/
 │       └── ci.yml               # Continuous integration workflow
 ├── backend/                     # Backend codebase
 │   ├── src/                     # Source files for backend
-│   │   ├── config/              # Configuration files (e.g., database, environment)
-│   │   ├── controllers/         # Request handlers for routes
-│   │   ├── models/              # Database models
-│   │   ├── routes/              # API route definitions
+│   │   ├── config/              # Configuration files
+│   │   │   └── database.js      # Database connection setup
+│   │   ├── controllers/         # Request handlers
+│   │   │   └── companyController.js
+│   │   ├── models/              # Sequelize models
+│   │   │   └── Company.js       # Company model
+│   │   ├── routes/              # API routes
+│   │   │   └── companyRoutes.js
 │   │   ├── middlewares/         # Middleware for authentication, validation, etc.
 │   │   ├── utils/               # Helper functions and utilities
 │   │   └── app.js               # Main application setup
 │   ├── tests/                   # Unit and integration tests for backend
 │   ├── package.json             # Backend dependencies and scripts
+│   ├── node_modules/            # Installed dependencies
 │   ├── .eslintrc.js             # Backend ESLint configuration
 │   ├── .prettierrc              # Prettier configuration
 │   └── .env.example             # Example environment variables file
-├── frontend/                    # Frontend codebase
+├── frontend/                    # Frontend codebasefrontend/
 │   ├── public/
 │   │   ├── index.html               # Entry point for React
 │   │   ├── favicon.ico              # App favicon
@@ -268,11 +273,13 @@ project-ethos/
 │   │   ├── utils/                   # Utility functions
 │   │   ├── App.jsx                  # Root application component
 │   │   └── index.js                 # Entry point
-│   ├── tests/                   # Unit and integration tests for frontend
-│   ├── package.json             # Frontend dependencies and scripts
-│   ├── .eslintrc.js             # Frontend ESLint configuration
-│   ├── .prettierrc              # Prettier configuration
-│   └── .env.example             # Example environment variables file
+│   ├── tests/                       # Unit and integration tests for frontend
+│   │   └── example.test.js          # Example test file
+│   ├── .gitignore                   # Ignore unnecessary files
+│   ├── package.json                 # Frontend dependencies and scripts
+│   ├── .eslintrc.js                 # Frontend ESLint configuration
+│   ├── .prettierrc                  # Prettier configuration
+│   └── .env.example                 # Example environment variables file
 ├── docs/                        # Documentation files
 │   ├── API.md                   # API documentation
 │   ├── CONTRIBUTING.md          # Contribution guidelines
