@@ -49,6 +49,7 @@ function example() {
 	const message = "Hello, World!";
 	console.log(message);
 }
+```
 
 Line Length
 	•	Limit lines to 80 characters where possible.
