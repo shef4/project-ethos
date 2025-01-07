@@ -3,7 +3,6 @@ const app = require('../src/app');
 const { User, sequelize } = require('../src/models');
 const bcrypt = require('bcrypt');
 
-// Seed database before running tests
 const seedDatabase = async () => {
   await User.create({
     email: 'testuser@example.com',
@@ -36,7 +35,7 @@ describe('User API', () => {
   });
 
   test('Should login with correct credentials', async () => {
-    const loginData = { email: 'testuser@example.com', password: 'password123' };  // Corrected to plaintext password
+    const loginData = { email: 'testuser@example.com', password: 'password123' };
     const res = await request(app).post('/api/auth/login').send(loginData);
   
     console.log('Response status:', res.statusCode);
@@ -49,7 +48,7 @@ describe('User API', () => {
     expect(res.statusCode).toBe(200); // Expect successful login
     expect(res.body).toHaveProperty('token');
   });
-  
+
   test('Should not login with incorrect password', async () => {
     const res = await request(app).post('/api/auth/login').send({
       email: 'testuser@example.com',
@@ -58,10 +57,10 @@ describe('User API', () => {
   
     console.log('Invalid password response:', res.body);
   
-    expect(res.statusCode).toBe(401); // Expect unauthorized error
+    expect(res.statusCode).toBe(401);
     expect(res.body).toHaveProperty('error', 'Invalid credentials');
   });
-  
+
   test('Should return 404 for non-existent user login', async () => {
     const res = await request(app).post('/api/auth/login').send({
       email: 'nonexistent@example.com',
@@ -70,12 +69,12 @@ describe('User API', () => {
   
     console.log('Non-existent user login response:', res.body);
   
-    expect(res.statusCode).toBe(404); // Expect not found error
+    expect(res.statusCode).toBe(404);
     expect(res.body).toHaveProperty('error', 'User not found');
   });
 
   test('Should fetch user profile', async () => {
-    const res = await request(app).get('/api/users/profile/1'); // Assuming ID 1 exists
+    const res = await request(app).get('/api/users/profile/1');
     console.log('Profile fetch response:', res.body);
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('user');

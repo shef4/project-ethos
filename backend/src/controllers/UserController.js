@@ -12,8 +12,7 @@ const registerUser = async (req, res) => {
 
     const passwordHash = await bcrypt.hash(password, 10);
     const user = await User.create({ email, username, passwordHash });
-
-    console.log(`User registered: ${email}`);
+    console.log(`User registered: ${user.email}`);
     return res.status(201).json({ user });
   } catch (error) {
     console.error('Register error:', error);
@@ -26,8 +25,8 @@ const loginUser = async (req, res) => {
 
   try {
     console.log(`Attempting login for email: ${email}`);
-    const user = await User.findOne({ where: { email } });
 
+    const user = await User.findOne({ where: { email } });
     if (!user) {
       console.error('User not found:', email);
       return res.status(404).json({ error: 'User not found' });
@@ -39,21 +38,19 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    const jwtSecret = process.env.JWT_SECRET;
-    if (!jwtSecret) {
-      console.error('JWT_SECRET is missing');
+    if (!process.env.JWT_SECRET) {
       throw new Error('JWT_SECRET is undefined');
     }
 
-    const token = jwt.sign({ id: user.id, email: user.email }, jwtSecret, { expiresIn: '1h' });
-    console.log(`Generated token: ${token}`);
+    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    });
     return res.status(200).json({ token });
   } catch (error) {
-    console.error('Login error:', error.message || error);
+    console.error('Login error:', error);
     res.status(500).json({ error: 'Error logging in' });
   }
 };
-
 
 const getUserProfile = async (req, res) => {
   try {

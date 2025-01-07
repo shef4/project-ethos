@@ -19,15 +19,14 @@ router.post('/create-data', async (req, res) => {
 });
 
 
-router.post('/generate-fake-data', async (req, res) => {
+// Route to generate fake data
+router.get('/generate-fake-data', async (req, res) => {
   try {
     await createFakeData();
-    res.status(201).json({ message: 'Fake data generated successfully.' });
+    res.status(200).json({ message: 'Fake data generated successfully!' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Error generating fake data' });
   }
 });
-
-module.exports = router;
 
 module.exports = router;

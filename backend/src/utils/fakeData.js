@@ -1,16 +1,24 @@
 const { faker } = require('@faker-js/faker');
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const Company = require('../models/Company');
 const Review = require('../models/Review');
 
 const createFakeData = async () => {
   try {
-    // Create 10 fake users
+    console.log('Starting fake data generation...');
+
+    // Clear existing data if needed (optional)
+    await Review.destroy({ where: {} });
+    await Company.destroy({ where: {} });
+    await User.destroy({ where: {} });
+
+    // Create 10 fake users with hashed passwords
     for (let i = 0; i < 10; i++) {
       await User.create({
         email: faker.internet.email(),
-        username: faker.internet.username(), // Updated method
-        passwordHash: faker.internet.password(),
+        username: faker.internet.userName(),
+        passwordHash: await bcrypt.hash(faker.internet.password(10), 10), // Hashing password
       });
     }
 
@@ -34,14 +42,14 @@ const createFakeData = async () => {
       await Review.create({
         userId: randomUser.id,
         companyId: randomCompany.id,
-        rating: faker.number.float({ min: 1, max: 5, precision: 0.1 }), // Updated method
-        comments: faker.lorem.sentences(3),
+        rating: faker.datatype.float({ min: 1, max: 5, precision: 0.1 }),
+        comments: faker.lorem.paragraph(),
       });
     }
 
     console.log('Fake data created successfully.');
   } catch (error) {
-    console.error('Error creating fake data:', error);
+    console.error('Error creating fake data:', error.message || error);
   }
 };
 
