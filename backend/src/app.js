@@ -2,30 +2,45 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const sequelize = require('./config/database');
+const { Sequelize } = require('sequelize');
 const companyRoutes = require('./routes/companyRoutes');
-const Company = require('./models/Company');
 
 dotenv.config();
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Routes
-app.use('/api/companies', companyRoutes);
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  logging: false,
+});
 
-// Test Database Connection
 sequelize.authenticate()
   .then(() => console.log('Database connected...'))
   .catch((err) => console.log('Error: ' + err));
 
-// Sync Database
 sequelize.sync({ force: true })
-  .then(() => console.log('Database synced'))
-  .catch((err) => console.log('Error syncing database: ' + err));
+  .then(() => console.log('Tables created successfully'))
+  .catch((err) => console.log('Error syncing tables: ' + err));
 
-// Start the Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Routes
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/companies', require('./routes/companyRoutes')); 
+app.use('/api/reviews', require('./routes/reviewRoutes'));
+app.use('/api/auth', require('./routes/authRoutes'));
+
+
+// Default route
+app.get('/', (req, res) => {
+  res.send('Welcome to Project-Ethos API!');
+});
+
+
+// Export app without starting server for tests
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+module.exports = app;

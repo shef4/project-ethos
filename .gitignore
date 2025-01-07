@@ -10,6 +10,7 @@ npm-debug.log*
 
 # dotenv environment variables file
 .env
+.env.test
 
 # Build directories
 /build
